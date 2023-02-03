@@ -20,6 +20,9 @@ public class DoubleJumpPlayerState : AbstractPlayerState
         Vector3 accelerationForce = new Vector3(moveValue.x, 0, moveValue.y) * Acceleration;
         playerBody.AddForce(accelerationForce, ForceMode.Force);
     }
+    public override void PretendUpdate()
+    {
+    }
 
-    public DoubleJumpPlayerState(GameObject player, PlayerInput context) : base(player, context) { }
+    public DoubleJumpPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
 }

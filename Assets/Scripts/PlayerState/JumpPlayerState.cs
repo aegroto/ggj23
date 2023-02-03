@@ -34,5 +34,12 @@ public class JumpPlayerState : AbstractPlayerState
         }
     }
 
-    public JumpPlayerState(GameObject player, PlayerInput context) : base(player, context) { }
+    public override void PretendUpdate()
+    {
+        if (playerBody.velocity.y < 0f)
+            animator.SetFloat("VerticalSpeed", 0f);
+        else animator.SetFloat("VerticalSpeed", 0.5f);
+    }
+
+    public JumpPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
 }

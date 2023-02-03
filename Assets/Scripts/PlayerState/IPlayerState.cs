@@ -9,4 +9,5 @@ interface IPlayerState
     void HandleJump(InputAction.CallbackContext ctx, GameObject player);
     void HandleAttack(InputAction.CallbackContext ctx, GameObject player);
     void PretendFixedUpdate();
+    void PretendUpdate();
 }

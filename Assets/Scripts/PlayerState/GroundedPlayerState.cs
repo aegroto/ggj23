@@ -7,12 +7,12 @@ public class GroundedPlayerState : AbstractPlayerState
 {
     public float Speed { get; set; } = 8f;
     public float MaxMovementForce { get; set; } = 4f;
-    public float JumpForce { get; set; } = 6f;
+    public float JumpForce { get; set; } = 12f;
     private bool jump = false;
     
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
         moveValue = ctx.ReadValue<Vector2>();
-        Debug.Log(moveValue);
+        //Debug.Log(moveValue);
     }
     public override void HandleJump(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)
@@ -39,9 +39,22 @@ public class GroundedPlayerState : AbstractPlayerState
         {
             jump = false;
             playerBody.AddForce(0, JumpForce, 0, ForceMode.Impulse);
+            animator.SetTrigger("Jump");
             context.SetPlayerState("JUMP");
         }
     }
 
-    public GroundedPlayerState(GameObject player, PlayerInput context) : base(player, context) { }
+    public override void PretendUpdate()
+    {
+        if (moveValue.sqrMagnitude != 0f)
+        {
+            animator.SetFloat("Speed", 1f);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0f);
+        }
+    }
+
+    public GroundedPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
 }

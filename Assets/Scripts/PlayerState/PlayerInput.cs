@@ -15,10 +15,11 @@ public class PlayerInput : MonoBehaviour
     }
     private void Start()
     {
-        playerStatesPool = new AbstractPlayerState[3];
-        playerStatesPool[0] = new GroundedPlayerState(gameObject, this, animator);
-        playerStatesPool[1] = new JumpPlayerState(gameObject, this, animator);
-        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this, animator);
+        playerStatesPool = new AbstractPlayerState[4];
+        playerStatesPool[0] = new GroundedPlayerState(gameObject, this);
+        playerStatesPool[1] = new JumpPlayerState(gameObject, this);
+        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this);
+        playerStatesPool[3] = new StunnedPlayerState(gameObject, this);
         playerState = playerStatesPool[0];
     }
 
@@ -69,6 +70,11 @@ public class PlayerInput : MonoBehaviour
             case "DOUBLEJUMP":
                 playerStatesPool[2].SetMoveValue(playerState.GetMoveValue());
                 playerState = playerStatesPool[2];
+                break;
+            case "STUNNED":
+                gameObject.GetComponent <Rigidbody>().velocity = Vector3.zero;
+                playerStatesPool[3].SetMoveValue(playerState.GetMoveValue());
+                playerState = playerStatesPool[3];
                 break;
         }
     }

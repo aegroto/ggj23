@@ -25,15 +25,16 @@ public class GroundedPlayerState : AbstractPlayerState
 
     //Metodo da richiamare manualmente nel FixedUpdate della classe context PlayerInput
     public override void PretendFixedUpdate() { 
-        Vector3 currentVelocity = playerBody.velocity;
-        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+   
+            Vector3 currentVelocity = playerBody.velocity;
+            Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
 
-        targetVelocity = player.transform.TransformDirection(targetVelocity);
+            targetVelocity = player.transform.TransformDirection(targetVelocity);
 
-        Vector3 velocityChange = targetVelocity - currentVelocity;
-        Vector3.ClampMagnitude(velocityChange, MaxMovementForce);
+            Vector3 velocityChange = targetVelocity - currentVelocity;
+            Vector3.ClampMagnitude(velocityChange, MaxMovementForce);
 
-        playerBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            playerBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
         if (jump)
         {
@@ -42,7 +43,8 @@ public class GroundedPlayerState : AbstractPlayerState
             animator.SetTrigger("Jump");
             context.SetPlayerState("JUMP");
         }
-    }
+   
+
 
     public override void PretendUpdate()
     {

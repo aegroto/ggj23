@@ -5,16 +5,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     private AbstractPlayerState playerState;
     private AbstractPlayerState[] playerStatesPool;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     private void Start()
     {
         playerStatesPool = new AbstractPlayerState[4];
-        playerStatesPool[0] = new GroundedPlayerState(gameObject, this);
-        playerStatesPool[1] = new JumpPlayerState(gameObject, this);
-        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this);
-        playerStatesPool[3] = new StunnedPlayerState(gameObject, this);
+        playerStatesPool[0] = new GroundedPlayerState(gameObject, this, animator);
+        playerStatesPool[1] = new JumpPlayerState(gameObject, this, animator);
+        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this, animator);
+        playerStatesPool[3] = new StunnedPlayerState(gameObject, this, animator);
         playerState = playerStatesPool[0];
     }
 
@@ -35,6 +40,11 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         playerState.PretendFixedUpdate();
+    }
+
+    private void Update()
+    {
+        playerState.PretendUpdate();
     }
 
     private void OnCollisionEnter(Collision collision)

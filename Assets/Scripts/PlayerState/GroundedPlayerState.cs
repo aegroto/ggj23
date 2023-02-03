@@ -13,6 +13,7 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
         moveValue = ctx.ReadValue<Vector2>();
     }
+
     public override void HandleJump(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)
         {
@@ -25,7 +26,14 @@ public class GroundedPlayerState : AbstractPlayerState
     //Metodo da richiamare manualmente nel FixedUpdate della classe context PlayerInput
     public override void PretendFixedUpdate() { 
         Vector3 currentVelocity = playerBody.velocity;
-        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+
+        GameObject camera = GameObject.Find("Main Camera");
+        Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
+
+        float angle = cameraAngles.y; 
+        Vector2 rotatedMoveValue = Quaternion.Euler(0, 0, -angle) * moveValue;
+
+        Vector3 targetVelocity = new Vector3(rotatedMoveValue.x, 0, rotatedMoveValue.y) * Speed;
 
         targetVelocity = player.transform.TransformDirection(targetVelocity);
 

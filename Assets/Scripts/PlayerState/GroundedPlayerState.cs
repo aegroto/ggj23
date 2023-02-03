@@ -30,10 +30,13 @@ public class GroundedPlayerState : AbstractPlayerState
         GameObject camera = GameObject.Find("Main Camera");
         Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
 
-        float angle = cameraAngles.y; 
+        float angle = cameraAngles.y;
         Vector2 rotatedMoveValue = Quaternion.Euler(0, 0, -angle) * moveValue;
-
         Vector3 targetVelocity = new Vector3(rotatedMoveValue.x, 0, rotatedMoveValue.y) * Speed;
+
+        /*if(moveValue.magnitude > 0) {
+            playerBody.rotation = Quaternion.Euler(0, cameraAngles.y, 0);
+        }*/
 
         targetVelocity = player.transform.TransformDirection(targetVelocity);
 

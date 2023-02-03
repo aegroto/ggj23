@@ -12,7 +12,6 @@ public class GroundedPlayerState : AbstractPlayerState
     
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
         moveValue = ctx.ReadValue<Vector2>();
-        Debug.Log(moveValue);
     }
     public override void HandleJump(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)

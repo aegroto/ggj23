@@ -12,8 +12,8 @@ public class GroundedPlayerState : AbstractPlayerState
     
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
         moveValue = ctx.ReadValue<Vector2>();
-        //Debug.Log(moveValue);
     }
+
     public override void HandleJump(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)
         {
@@ -25,16 +25,25 @@ public class GroundedPlayerState : AbstractPlayerState
 
     //Metodo da richiamare manualmente nel FixedUpdate della classe context PlayerInput
     public override void PretendFixedUpdate() { 
-   
-            Vector3 currentVelocity = playerBody.velocity;
-            Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+        Vector3 currentVelocity = playerBody.velocity;
 
-            targetVelocity = player.transform.TransformDirection(targetVelocity);
+        GameObject camera = GameObject.Find("Main Camera");
+        Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
 
-            Vector3 velocityChange = targetVelocity - currentVelocity;
-            Vector3.ClampMagnitude(velocityChange, MaxMovementForce);
+        float angle = cameraAngles.y;
+        Vector2 rotatedMoveValue = Quaternion.Euler(0, 0, -angle) * moveValue;
+        Vector3 targetVelocity = new Vector3(rotatedMoveValue.x, 0, rotatedMoveValue.y) * Speed;
 
-            playerBody.AddForce(velocityChange, ForceMode.VelocityChange);
+        /*if(moveValue.magnitude > 0) {
+            playerBody.rotation = Quaternion.Euler(0, cameraAngles.y, 0);
+        }*/
+
+        targetVelocity = player.transform.TransformDirection(targetVelocity);
+
+        Vector3 velocityChange = targetVelocity - currentVelocity;
+        Vector3.ClampMagnitude(velocityChange, MaxMovementForce);
+
+        playerBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
         if (jump)
         {
@@ -43,7 +52,8 @@ public class GroundedPlayerState : AbstractPlayerState
             animator.SetTrigger("Jump");
             context.SetPlayerState("JUMP");
         }
-   
+    }
+
 
 
     public override void PretendUpdate()

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 8908088520476411553}
   - component: {fileID: 8908088520476411554}
   - component: {fileID: 8908088520476411558}
-  - component: {fileID: 8908088520476411581}
+  - component: {fileID: 4996403469915061906}
   - component: {fileID: 8908088520476411580}
+  - component: {fileID: 8908088520476411581}
   - component: {fileID: 8908088520476411583}
+  - component: {fileID: 7853546779929917762}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8908088520476411559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.05}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -109,7 +111,33 @@ CapsuleCollider:
   m_Radius: 1.2
   m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 2.3, z: 0}
+  m_Center: {x: 0, y: 3.56, z: 0}
+--- !u!135 &4996403469915061906
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908088520476411559}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8908088520476411580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908088520476411559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e5ac96196294d44bdbb07fde14df46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8908088519543149051}
 --- !u!114 &8908088520476411581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,19 +248,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8908088520476411580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8908088520476411559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e5ac96196294d44bdbb07fde14df46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8908088519543149051}
 --- !u!114 &8908088520476411583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +262,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   baseAttackDamage: 10
+--- !u!114 &7853546779929917762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908088520476411559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1024f203766f9c4587cb58b94277c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8908088520177874240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,11 +291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cee2839ac6e815744ba66517b4be328f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cee2839ac6e815744ba66517b4be328f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cee2839ac6e815744ba66517b4be328f, type: 3}
       propertyPath: m_LocalRotation.w

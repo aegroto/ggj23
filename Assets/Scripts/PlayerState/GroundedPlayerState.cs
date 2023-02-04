@@ -45,11 +45,12 @@ public class GroundedPlayerState : AbstractPlayerState
                 yFactor = Mathf.Sign(moveValue.y) * Mathf.Acos(moveValue.y);
             float angle = cameraFactor + xFactor + yFactor;
 
-            Quaternion targetRotation = Quaternion.Euler(0, angle * Mathf.Rad2Deg, 0);
-            Transform meshTransform = playerBody.transform.Find("PlayerMesh").transform;
+            Transform meshTransform = playerBody.transform.Find("PlayerPivot").transform;
+            Quaternion targetRotation = Quaternion.Euler(meshTransform.rotation.x, angle * Mathf.Rad2Deg, meshTransform.rotation.z);
             meshTransform.rotation = 
                 Quaternion.Slerp(meshTransform.rotation, targetRotation, 0.1f);
-            Debug.Log(meshTransform.rotation);
+
+            Debug.Log(meshTransform.rotation.eulerAngles);
         }
 
         Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;

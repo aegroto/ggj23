@@ -30,7 +30,7 @@ public class GroundedPlayerState : AbstractPlayerState
         GameObject camera = GameObject.Find("Main Camera");
 
         if(moveValue.magnitude > 0) {
-            Debug.Log(moveValue);
+            //Debug.Log(moveValue);
             Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
 
             float cameraFactor = cameraAngles.y * Mathf.Deg2Rad;
@@ -41,9 +41,10 @@ public class GroundedPlayerState : AbstractPlayerState
             float angle = cameraFactor + xFactor + yFactor;
 
             Quaternion targetRotation = Quaternion.Euler(0, angle * Mathf.Rad2Deg, 0);
-            Transform meshTransform = playerBody.transform.GetChild(0).transform;
+            Transform meshTransform = playerBody.transform.Find("PlayerMesh").transform;
             meshTransform.rotation = 
                 Quaternion.Slerp(meshTransform.rotation, targetRotation, 0.1f);
+            Debug.Log(meshTransform.rotation);
         }
 
         Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;

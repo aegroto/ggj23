@@ -10,6 +10,7 @@ public class JumpPlayerState : AbstractPlayerState
     private bool doubleJump = false;
     private bool cancelJump = false;
     public float Acceleration { get; set; } = 3f;
+    public float StartingYAtJump { get; set; }
 
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player)
     {
@@ -19,13 +20,11 @@ public class JumpPlayerState : AbstractPlayerState
     {
         if(ctx.performed)
         {
-            Debug.Log("Jump performed");
             doubleJump = true;
         }
         if(ctx.canceled)
         {
             cancelJump = true;
-            Debug.Log("Jump canceled");
         }
     }
     public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) { }
@@ -49,7 +48,7 @@ public class JumpPlayerState : AbstractPlayerState
             return;
         }
 
-        if (cancelJump && player.transform.position.y >= 4f)
+        if (cancelJump && (player.transform.position.y - StartingYAtJump) >= 4f)
         {
             cancelJump = false;
             playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);
@@ -60,7 +59,7 @@ public class JumpPlayerState : AbstractPlayerState
     public override void PretendUpdate()
     {
         if (playerBody.velocity.y < 0f)
-            animator.SetFloat("VerticalSpeed", 0f);
+            animator.SetFloat("VerticalSpeed", -0.5f);
         else animator.SetFloat("VerticalSpeed", 0.5f);
     }
 

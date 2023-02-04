@@ -20,13 +20,11 @@ public class JumpPlayerState : AbstractPlayerState
     {
         if(ctx.performed)
         {
-            Debug.Log("Jump performed");
             doubleJump = true;
         }
         if(ctx.canceled)
         {
             cancelJump = true;
-            Debug.Log("Jump canceled");
         }
     }
     public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) { }
@@ -61,7 +59,7 @@ public class JumpPlayerState : AbstractPlayerState
     public override void PretendUpdate()
     {
         if (playerBody.velocity.y < 0f)
-            animator.SetFloat("VerticalSpeed", 0f);
+            animator.SetFloat("VerticalSpeed", -0.5f);
         else animator.SetFloat("VerticalSpeed", 0.5f);
     }
 

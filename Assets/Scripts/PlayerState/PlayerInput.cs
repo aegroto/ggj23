@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
     }
     private void Start()
     {

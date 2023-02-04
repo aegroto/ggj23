@@ -27,16 +27,14 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void PretendFixedUpdate() { 
         Vector3 currentVelocity = playerBody.velocity;
 
-        GameObject camera = GameObject.Find("Main Camera");
-        Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
+        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
 
-        float angle = cameraAngles.y;
-        Vector2 rotatedMoveValue = Quaternion.Euler(0, 0, -angle) * moveValue;
-        Vector3 targetVelocity = new Vector3(rotatedMoveValue.x, 0, rotatedMoveValue.y) * Speed;
-
-        /*if(moveValue.magnitude > 0) {
-            playerBody.rotation = Quaternion.Euler(0, cameraAngles.y, 0);
-        }*/
+        if(moveValue.magnitude > 0) {
+            GameObject camera = GameObject.Find("Main Camera");
+            Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
+            Quaternion targetRotation = Quaternion.Euler(0, cameraAngles.y, 0);
+            playerBody.MoveRotation(Quaternion.Slerp(playerBody.rotation, targetRotation, 0.1f));
+        }
 
         targetVelocity = player.transform.TransformDirection(targetVelocity);
 

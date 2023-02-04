@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class GroundedPlayerState : AbstractPlayerState
 {
-    public float Speed { get; set; } = 8f;
-    public float MaxMovementForce { get; set; } = 4f;
-    public float JumpForce { get; set; } = 12f;
+    public float Speed { get; set; } = 10f;
+    public float MaxMovementForce { get; set; } = 80f;
+    public float JumpForce { get; set; } = 12f;    
     private bool jump = false;
     
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
@@ -32,22 +32,32 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void PretendFixedUpdate() { 
         Vector3 currentVelocity = playerBody.velocity;
 
-        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+        GameObject camera = GameObject.Find("Main Camera");
 
         if(moveValue.magnitude > 0) {
-            GameObject camera = GameObject.Find("Main Camera");
+            //Debug.Log(moveValue);
             Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
-            Quaternion targetRotation = Quaternion.Euler(0, cameraAngles.y, 0);
-            playerBody.MoveRotation(Quaternion.Slerp(playerBody.rotation, targetRotation, 0.1f));
+
+            float cameraFactor = cameraAngles.y * Mathf.Deg2Rad;
+            float xFactor = Mathf.Asin(moveValue.x);
+            float yFactor = 0.0f;
+            if(Mathf.Abs(moveValue.y) > 0.0f)
+                yFactor = Mathf.Sign(moveValue.y) * Mathf.Acos(moveValue.y);
+            float angle = cameraFactor + xFactor + yFactor;
+
+            Quaternion targetRotation = Quaternion.Euler(0, angle * Mathf.Rad2Deg, 0);
+            Transform meshTransform = playerBody.transform.Find("PlayerMesh").transform;
+            meshTransform.rotation = 
+                Quaternion.Slerp(meshTransform.rotation, targetRotation, 0.1f);
+            Debug.Log(meshTransform.rotation);
         }
 
-        targetVelocity = player.transform.TransformDirection(targetVelocity);
+        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+        targetVelocity = camera.transform.TransformDirection(targetVelocity);
+        targetVelocity = Vector3.ClampMagnitude(targetVelocity, MaxMovementForce);
+        targetVelocity.y = currentVelocity.y;
 
-        Vector3 velocityChange = targetVelocity - currentVelocity;
-        velocityChange.y = 0;
-        Vector3.ClampMagnitude(velocityChange, MaxMovementForce);
-
-        playerBody.AddForce(velocityChange, ForceMode.VelocityChange);
+        playerBody.velocity = targetVelocity;
 
         if (jump)
         {

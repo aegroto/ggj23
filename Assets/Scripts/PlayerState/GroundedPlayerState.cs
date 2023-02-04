@@ -69,6 +69,8 @@ public class GroundedPlayerState : AbstractPlayerState
         {
             animator.SetFloat("Speed", 0f);
         }
+
+        
     }
 
     public GroundedPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }

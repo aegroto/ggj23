@@ -58,5 +58,7 @@ public class PlayerStats : MonoBehaviour
     {
         //Debug.Log(score + " score");
         //Debug.Log(health + " health");
+        if (health <= 0)
+            gameObject.GetComponent<PlayerInput>().SetPlayerState("DEAD");
     }
 }

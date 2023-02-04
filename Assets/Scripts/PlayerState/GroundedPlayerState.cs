@@ -27,7 +27,7 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void PretendFixedUpdate() { 
         Vector3 currentVelocity = playerBody.velocity;
 
-        Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
+        Vector3 targetVelocity = new Vector3(moveValue.x, currentVelocity.y, moveValue.y) * Speed;
 
         if(moveValue.magnitude > 0) {
             GameObject camera = GameObject.Find("Main Camera");

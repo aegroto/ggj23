@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class GroundedPlayerState : AbstractPlayerState
 {
-    public float Speed { get; set; } = 10f;
+    public float Speed { get; set; } = 40f;
     public float MaxMovementForce { get; set; } = 80f;
     public float JumpForce { get; set; } = 12f;    
     private bool jump = false;

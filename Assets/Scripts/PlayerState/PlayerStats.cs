@@ -49,6 +49,12 @@ public class PlayerStats : MonoBehaviour
         return health;
     }
 
+
+    public int getScore()
+    {
+        return score;
+    }
+
     public int getPlayerAttackPower()
     {
         return attackDamage;

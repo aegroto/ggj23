@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class GroundedPlayerState : AbstractPlayerState
 {
-    public float Speed { get; set; } = 10f;
-    public float MaxMovementForce { get; set; } = 80f;
-    public float JumpForce { get; set; } = 12f;    
+    public float Speed { get; set; } = 20f;
+    public float MaxMovementForce { get; set; } = 30f;
+    public float JumpForce { get; set; } = 400f;    
     private bool jump = false;
     
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player) {
@@ -30,7 +30,6 @@ public class GroundedPlayerState : AbstractPlayerState
         GameObject camera = GameObject.Find("Main Camera");
 
         if(moveValue.magnitude > 0) {
-            //Debug.Log(moveValue);
             Vector3 cameraAngles = camera.transform.rotation.eulerAngles;
 
             float cameraFactor = cameraAngles.y * Mathf.Deg2Rad;
@@ -44,8 +43,6 @@ public class GroundedPlayerState : AbstractPlayerState
             Quaternion targetRotation = Quaternion.Euler(meshTransform.rotation.x, angle * Mathf.Rad2Deg, meshTransform.rotation.z);
             meshTransform.rotation = 
                 Quaternion.Slerp(meshTransform.rotation, targetRotation, 0.1f);
-
-            Debug.Log(meshTransform.rotation.eulerAngles);
         }
 
         Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;

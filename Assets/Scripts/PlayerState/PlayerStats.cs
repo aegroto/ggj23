@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(score + " score");
-        Debug.Log(health + " health");
+        //Debug.Log(score + " score");
+        //Debug.Log(health + " health");
     }
 }

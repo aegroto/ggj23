@@ -5,17 +5,27 @@ using UnityEngine;
 public class FeetTouchGround : MonoBehaviour
 {
     private PlayerInput context;
+    private Animator animator;
     private void Start()
     {
         context = GetComponentInParent<PlayerInput>();
+        animator = GetComponentInChildren<Animator>();
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log("Feet touch ground");
+            animator.SetTrigger("TouchedGround");
             context.SetPlayerState("GROUNDED");
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Exiting collision with " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Ground")
+        {
+            context.SetPlayerState("JUMP");
         }
     }
 }

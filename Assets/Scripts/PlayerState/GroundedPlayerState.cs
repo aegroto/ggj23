@@ -20,8 +20,13 @@ public class GroundedPlayerState : AbstractPlayerState
             jump = true;
         }
     }
-    public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) { }
 
+    public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) {
+        if (ctx.performed) {
+            player.GetComponentInChildren<MeshCollider>().enabled = true;
+            animator.SetTrigger("Attack");
+        }
+    }
 
     //Metodo da richiamare manualmente nel FixedUpdate della classe context PlayerInput
     public override void PretendFixedUpdate() { 
@@ -48,7 +53,6 @@ public class GroundedPlayerState : AbstractPlayerState
         {
             jump = false;
             playerBody.AddForce(0, JumpForce, 0, ForceMode.Impulse);
-            animator.SetTrigger("Jump");
             context.SetPlayerState("JUMP");
         }
     }

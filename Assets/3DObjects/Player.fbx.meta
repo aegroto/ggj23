@@ -3,7 +3,67 @@ guid: 721c74db1f3660e4c9447e4ffbd6d0fe
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Earring_Mat
+    second: {fileID: 2100000, guid: 056fe4e64b8ae498fbc15aa6e993bb3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cappello
+    second: {fileID: 2100000, guid: 4f2b6e59f83e31487bc56ca969ce5a7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cintura
+    second: {fileID: 2100000, guid: 1a31058073ae9790c8774e0fa677354b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corpo
+    second: {fileID: 2100000, guid: 3b3c7f178451e8502920f6246460ba51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ghianda
+    second: {fileID: 2100000, guid: bfbff85a901944bd49768884830875e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ghianda sopra
+    second: {fileID: 2100000, guid: 19ba03fae201cb579a812c081f42db9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metallo
+    second: {fileID: 2100000, guid: 057af39b08c0d8374a7111497c1116f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metallo.001
+    second: {fileID: 2100000, guid: 05db193ea63d8d54faba999a60de3c0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pantaloni
+    second: {fileID: 2100000, guid: 9cd9d009ce80c8881b0eb971211809dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pelle
+    second: {fileID: 2100000, guid: 758659f68f51040d5a308bd6ea4e2f5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piuma
+    second: {fileID: 2100000, guid: 297073b1d30caa6c598a2468227eac3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tabard
+    second: {fileID: 2100000, guid: 14eb874b1198b44658abdde328ccfc3b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

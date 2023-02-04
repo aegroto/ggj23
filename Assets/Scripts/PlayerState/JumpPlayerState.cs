@@ -6,11 +6,12 @@ using UnityEngine.InputSystem;
 
 public class JumpPlayerState : AbstractPlayerState
 {
-    public float JumpForce { get; set; } = 10f;
+    public float JumpForce { get; set; } = 300f;
     private bool doubleJump = false;
     private bool cancelJump = false;
     public float Acceleration { get; set; } = 3f;
     public float StartingYAtJump { get; set; }
+    public float CancelJumpThreshold = 0.5f;
 
     public override void HandleMove(InputAction.CallbackContext ctx, GameObject player)
     {
@@ -48,7 +49,7 @@ public class JumpPlayerState : AbstractPlayerState
             return;
         }
 
-        if (cancelJump && (player.transform.position.y - StartingYAtJump) >= 4f)
+        if (cancelJump && (player.transform.position.y - StartingYAtJump) >= CancelJumpThreshold)
         {
             cancelJump = false;
             playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);

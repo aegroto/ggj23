@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30322725, g: 0.12813418, b: 0.342678, a: 1}
+  m_IndirectSpecularColor: {r: 0.30321336, g: 0.12815265, b: 0.34266487, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5229,7 +5229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810496210213827924, guid: 15cc818b936b5058b8cf839494741b9b, type: 3}
       propertyPath: text
-      value: Great! Now attack the stems with Right-Click to destroy them and proceed
+      value: Great! Now attack the stems with Left-Click to destroy them and proceed
       objectReference: {fileID: 0}
     - target: {fileID: 810496210213827924, guid: 15cc818b936b5058b8cf839494741b9b, type: 3}
       propertyPath: label

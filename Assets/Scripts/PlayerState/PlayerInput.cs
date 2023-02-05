@@ -17,11 +17,12 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
-        playerStatesPool = new AbstractPlayerState[4];
+        playerStatesPool = new AbstractPlayerState[5];
         playerStatesPool[0] = new GroundedPlayerState(gameObject, this, animator, playerAudio);
         playerStatesPool[1] = new JumpPlayerState(gameObject, this, animator, playerAudio);
         playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this, animator, playerAudio);
         playerStatesPool[3] = new StunnedPlayerState(gameObject, this, animator, playerAudio);
+        playerStatesPool[4] = new DeadPlayerState(gameObject, this, animator, playerAudio);
         playerState = playerStatesPool[0];
     }
 
@@ -73,6 +74,9 @@ public class PlayerInput : MonoBehaviour
                 gameObject.GetComponent <Rigidbody>().velocity = Vector3.zero;
                 playerStatesPool[3].SetMoveValue(playerState.GetMoveValue());
                 playerState = playerStatesPool[3];
+                break;
+            case "DEAD":
+                playerState = playerStatesPool[4];
                 break;
         }
     }

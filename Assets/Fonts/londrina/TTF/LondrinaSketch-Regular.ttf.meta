@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: dae306b718e494d43bd3c7b5154fe4bb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Londrina Sketch
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 72122a2a9769bac4db2e847c427169cd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseAttackDamage: 10
+  baseAttackDamage: 1
   health: 0
 --- !u!114 &7853546779929917762
 MonoBehaviour:

@@ -62,6 +62,11 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            health = 100;
+            score = 0;
+        }
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("Health", health);
         //Debug.Log(score + " score");

@@ -39,6 +39,7 @@ public class PlayerStats : MonoBehaviour
     public void Death()
     {
         gameObject.GetComponentInChildren<Animator>().SetTrigger("Death");
+        gameObject.GetComponent<PlayerInput>().SetPlayerState("DEAD");
     }
 
     public void AddHealth(int health)

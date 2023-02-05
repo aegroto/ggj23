@@ -10,6 +10,7 @@ public abstract class AbstractPlayerState : IPlayerState
     protected PlayerInput context;
     protected Vector2 moveValue;
     protected Animator animator;
+    protected PlayerAudio playerAudio;
     
     public void SetMoveValue(Vector2 moveValue)
     {
@@ -23,11 +24,12 @@ public abstract class AbstractPlayerState : IPlayerState
     abstract public void HandleAttack(InputAction.CallbackContext ctx, GameObject player);
     abstract public void PretendFixedUpdate();
     abstract public void PretendUpdate();
-    public AbstractPlayerState(GameObject player, PlayerInput context, Animator animator)
+    public AbstractPlayerState(GameObject player, PlayerInput context, Animator animator, PlayerAudio playerAudio)
     {
         this.player = player;
         this.playerBody = player.GetComponent<Rigidbody>();
         this.context = context;
         this.animator = animator;
+        this.playerAudio = playerAudio;
     }
 }

@@ -17,10 +17,18 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void HandleJump(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)
         {
+            //context refers to the States context, not the action context
+            playerAudio.StopPlayingFootsteps();
+            playerAudio.PlayJumpSound();
             jump = true;
         }
     }
-    public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) { }
+    public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) {
+        if (ctx.performed)
+        {
+            animator.SetTrigger("Attack");
+        }
+    }
 
 
     //Metodo da richiamare manualmente nel FixedUpdate della classe context PlayerInput
@@ -43,6 +51,7 @@ public class GroundedPlayerState : AbstractPlayerState
             Quaternion targetRotation = Quaternion.Euler(meshTransform.rotation.x, angle * Mathf.Rad2Deg, meshTransform.rotation.z);
             meshTransform.rotation = 
                 Quaternion.Slerp(meshTransform.rotation, targetRotation, 0.1f);
+            playerAudio.PlayFootsteps();
         }
 
         Vector3 targetVelocity = new Vector3(moveValue.x, 0, moveValue.y) * Speed;
@@ -75,5 +84,5 @@ public class GroundedPlayerState : AbstractPlayerState
         }
     }
 
-    public GroundedPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
+    public GroundedPlayerState(GameObject player, PlayerInput context, Animator animator, PlayerAudio playerAudio) : base(player, context, animator, playerAudio) { }
 }

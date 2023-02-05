@@ -12,5 +12,5 @@ public class StunnedPlayerState : AbstractPlayerState
     override public void HandleAttack(InputAction.CallbackContext ctx, GameObject player) { }
     override public void PretendFixedUpdate() { }
     public override void PretendUpdate() { }
-    public StunnedPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
+    public StunnedPlayerState(GameObject player, PlayerInput context, Animator animator, PlayerAudio playerAudio) : base(player, context, animator, playerAudio) { }
 }

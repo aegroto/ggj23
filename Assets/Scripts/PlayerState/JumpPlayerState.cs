@@ -21,6 +21,7 @@ public class JumpPlayerState : AbstractPlayerState
     {
         if(ctx.performed)
         {
+            playerAudio.PlayDoubleJumpSound();
             doubleJump = true;
         }
         if(ctx.canceled)
@@ -64,5 +65,5 @@ public class JumpPlayerState : AbstractPlayerState
         else animator.SetFloat("VerticalSpeed", 0.5f);
     }
 
-    public JumpPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
+    public JumpPlayerState(GameObject player, PlayerInput context, Animator animator, PlayerAudio playerAudio) : base(player, context, animator, playerAudio) { }
 }

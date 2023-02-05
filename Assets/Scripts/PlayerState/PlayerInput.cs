@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] private PlayerAudio playerAudio;
+    [SerializeField] private Animator animator;
     private AbstractPlayerState playerState;
     private AbstractPlayerState[] playerStatesPool;
 
@@ -13,13 +14,14 @@ public class PlayerInput : MonoBehaviour
     {
         // DontDestroyOnLoad(this.gameObject);
     }
+
     private void Start()
     {
         playerStatesPool = new AbstractPlayerState[4];
-        playerStatesPool[0] = new GroundedPlayerState(gameObject, this, animator);
-        playerStatesPool[1] = new JumpPlayerState(gameObject, this, animator);
-        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this, animator);
-        playerStatesPool[3] = new StunnedPlayerState(gameObject, this, animator);
+        playerStatesPool[0] = new GroundedPlayerState(gameObject, this, animator, playerAudio);
+        playerStatesPool[1] = new JumpPlayerState(gameObject, this, animator, playerAudio);
+        playerStatesPool[2] = new DoubleJumpPlayerState(gameObject, this, animator, playerAudio);
+        playerStatesPool[3] = new StunnedPlayerState(gameObject, this, animator, playerAudio);
         playerState = playerStatesPool[0];
     }
 

@@ -3,7 +3,17 @@ guid: 4ddb2e539390f6ad3a0314bd38e0f7a5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ali lucciola.001
+    second: {fileID: 2100000, guid: a17f5cccb92647a41a3dd8da0d1e79e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emitter lucciola.001
+    second: {fileID: 2100000, guid: 443d91088fbb2c241835808b262fbfce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

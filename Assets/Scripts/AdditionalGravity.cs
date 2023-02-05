@@ -11,6 +11,6 @@ public class AdditionalGravity : MonoBehaviour {
 
     void FixedUpdate() {
         rigidBody.AddForce(new Vector3(0, -Mathf.Abs(rigidBody.velocity.y) * value, 0));
-        Debug.Log(rigidBody.velocity);
+        //Debug.Log(rigidBody.velocity);
     }
 }

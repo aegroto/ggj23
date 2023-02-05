@@ -6,6 +6,7 @@ public class FeetTouchGround : MonoBehaviour
 {
     private PlayerInput context;
     private Animator animator;
+    [SerializeField] private float negativeVerticalSpeedThreshold;
     private void Start()
     {
         context = GetComponentInParent<PlayerInput>();
@@ -23,8 +24,9 @@ public class FeetTouchGround : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         Debug.Log("Exiting collision with " + collision.gameObject.tag);
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" && gameObject.GetComponent<Rigidbody>().velocity.y < negativeVerticalSpeedThreshold)
         {
+            gameObject.GetComponent<PlayerAudio>().StopPlayingFootsteps();
             context.SetPlayerState("JUMP");
         }
     }

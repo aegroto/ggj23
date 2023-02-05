@@ -43,5 +43,5 @@ public class DoubleJumpPlayerState : AbstractPlayerState
         else animator.SetFloat("VerticalSpeed", 0.5f);
     }
 
-    public DoubleJumpPlayerState(GameObject player, PlayerInput context, Animator animator) : base(player, context, animator) { }
+    public DoubleJumpPlayerState(GameObject player, PlayerInput context, Animator animator, PlayerAudio playerAudio) : base(player, context, animator, playerAudio) { }
 }

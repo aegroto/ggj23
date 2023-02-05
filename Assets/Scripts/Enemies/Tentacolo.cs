@@ -7,8 +7,7 @@ using UnityEngine;
 public class Tentacolo : MonoBehaviour
 {
 
-    private int maxHealth  = 3;
-    private int health;
+    
     [SerializeField]
     private Animator enemyAnim;
     [SerializeField]
@@ -18,6 +17,7 @@ public class Tentacolo : MonoBehaviour
     private bool mustLookAtPlayer = true;
     private bool isAttacking = false;
     private float waitTime = 0.5f;
+    private float reduceSpeed = 1.01f;
     private Coroutine attackCoroutine = null;
 
     
@@ -27,8 +27,7 @@ public class Tentacolo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        enemyAnim = GetComponent<Animator>();
+        enemyAnim = GetComponentInParent<Animator>();
         pg = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -41,18 +40,31 @@ public class Tentacolo : MonoBehaviour
             
         }
 
-        if (mustLookAtPlayer) transform.LookAt(pg.transform);
-
+        if (mustLookAtPlayer)
+        {
+            Vector3 tempRotation = transform.parent.rotation.eulerAngles;
+            transform.parent.LookAt(pg.transform);
+            transform.parent.rotation = Quaternion.Euler(tempRotation.x, transform.parent.rotation.eulerAngles.y, tempRotation.z);
+        }
 
     }
 
-    private void Death() {
+    public void Death() {
         if (attackCoroutine != null) StopCoroutine(attackCoroutine);
         isAttacking = false;
+        enemyAnim.SetTrigger("Dead");
+        StartCoroutine(ReduceEnemy());
     }
 
-    public void AddDamage(int damage) {
-        health -= damage;
+    public IEnumerator ReduceEnemy ()
+    {
+        while(transform.parent.localScale.x >= 0.05)
+        {
+            Debug.Log(transform.parent.localScale);
+            transform.parent.localScale /= reduceSpeed;
+            yield return null;
+        }
+        Destroy(transform.parent.gameObject);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -61,7 +73,7 @@ public class Tentacolo : MonoBehaviour
             //enemyAnim.SetTrigger("Attack");
             if (!isAttacking)
             {
-                Debug.Log("Starting attack coroutine");
+                //Debug.Log("Starting attack coroutine");
                 attackCoroutine = StartCoroutine(AttackPlayer());
                 isAttacking = true;
             }

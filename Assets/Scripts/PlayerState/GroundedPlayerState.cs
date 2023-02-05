@@ -26,6 +26,7 @@ public class GroundedPlayerState : AbstractPlayerState
     public override void HandleAttack(InputAction.CallbackContext ctx, GameObject player) {
         if (ctx.performed)
         {
+            GameObject.Find("PlayerAttackHitbox").GetComponent<SphereCollider>().enabled = true;
             animator.SetTrigger("Attack");
         }
     }

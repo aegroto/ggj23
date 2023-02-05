@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 7458492773302910702}
   m_Layer: 0
   m_Name: Root_4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnim: {fileID: 0}
+  pg: {fileID: 0}
 --- !u!1 &9176613626877224627
 GameObject:
   m_ObjectHideFlags: 0

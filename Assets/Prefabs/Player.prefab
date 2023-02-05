@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 1461683469}
   - component: {fileID: 1461683470}
   - component: {fileID: 1461683471}
+  - component: {fileID: 1461683459}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -510,7 +511,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -606,7 +607,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -690,7 +691,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.307
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -800,6 +801,31 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5b6b8727dd3ca0f43b9d9c6e20c4e792, type: 3}
   - {fileID: 8300000, guid: 0bdb43137bbf6ab48a33094d54431878, type: 3}
   - {fileID: 8300000, guid: dc32aec8d57d5b74ea9d62860194e5fc, type: 3}
+--- !u!169 &1461683459
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908088520476411559}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.045020465
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2681806066470251733
 PrefabInstance:
   m_ObjectHideFlags: 0

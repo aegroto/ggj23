@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Rilevata collisione dell'arma");
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
         {
             Debug.Log("Enemy attacked");
             other.gameObject.GetComponent<EnemyStats>().AddDamage(attackPower);

@@ -61,6 +61,7 @@ public class GroundedPlayerState : AbstractPlayerState
             jump = false;
             playerBody.AddForce(0, JumpForce, 0, ForceMode.Impulse);
             animator.SetTrigger("Jump");
+            animator.SetBool("TouchedGround", false);
             context.SetPlayerState("JUMP");
         }
     }

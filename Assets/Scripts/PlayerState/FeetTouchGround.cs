@@ -16,7 +16,7 @@ public class FeetTouchGround : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            animator.SetTrigger("TouchedGround");
+            animator.SetBool("TouchedGround", true);
             context.SetPlayerState("GROUNDED");
         }
     }

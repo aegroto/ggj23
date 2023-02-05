@@ -20,6 +20,11 @@ public class EnemyStats : MonoBehaviour
         if (health <= 0 && tentacolo != null) {
             tentacolo.Death();
         }
+        if (gameObject.tag == "Obstacle" && health <= 0)
+        {
+            gameObject.SetActive(false);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 
 

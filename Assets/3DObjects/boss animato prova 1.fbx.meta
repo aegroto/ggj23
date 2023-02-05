@@ -3,7 +3,27 @@ guid: 20273a0a904e838418faefeb1809bafe
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corrupted Roots
+    second: {fileID: 2100000, guid: d6d5d9331ec8a8444b7b869e521826d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: legno
+    second: {fileID: 2100000, guid: 5648a36ea3b47354aa07095bc37eb1ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: occhi glow
+    second: {fileID: 2100000, guid: 9be264880773c2a4ca9becd7ee45def6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piuma
+    second: {fileID: 2100000, guid: bf2e108b0996e874abb03c28cb095edb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

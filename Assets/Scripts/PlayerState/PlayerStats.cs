@@ -62,6 +62,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("Health", health);
         //Debug.Log(score + " score");
         //Debug.Log(health + " health");
     }
